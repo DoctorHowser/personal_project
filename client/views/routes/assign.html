@@ -1,0 +1,35 @@
+ <div class="container">
+        <h1>Make Assignment</h1>
+        <form>
+            <div class="form-group">
+                <label for="title">Assignment Title:</label>
+                <input ng-model="assignment.title"  class="form-control" type="text" name="title" id="title">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea ng-model="assignment.description" class="form-control" name="description" id="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="resource">Resource Link:</label>
+                <input ng-model="assignment.resource" class="form-control" type="text" name="resource" id="resource">
+            </div>
+            <div class="form-group">
+                <label for="cohort">Select Cohort:</label>
+                <select ng-model="assignment.cohort" class="form-control" name="cohort" id="cohort">
+                    <option>alpha</option>
+                    <option>beta</option>
+                    <option>gamma</option>
+                    <option>delta</option>
+                    <option>epsilon</option>
+                    <option>zeta</option>
+                    <option>eta</option>
+                    <option>theta</option>
+                    <option>iota</option>
+                    <option>kappa</option>
+                    <option>lambda</option>
+                </select>
+            </div>
+    </form>
+     <button ng-click="makeAssignment()" class="btn btn-info">Create Assignment</button>
+ </div>

@@ -12,6 +12,14 @@ module.exports = function(grunt){
             user: {
                 src: 'client/scripts/user.js',
                 dest: 'server/public/assets/scripts/user.min.js'
+            },
+            controllers: {
+                src: 'client/scripts/controllers/*.js',
+                dest: 'server/public/assets/scripts/controllers.min.js'
+            },
+            factories: {
+                src: 'client/scripts/factories/*.js',
+                dest: 'server/public/assets/scripts/factories.min.js'
             }
         },
         copy: {
@@ -23,6 +31,15 @@ module.exports = function(grunt){
                     "angular/angular.min.js.map"
                 ],
                 "dest": "server/public/vendors/"
+            },
+            angularRoute: {
+                expand: true,
+                cwd: 'node_modules/angular-route/',
+                src: [
+                    "angular-route.min.js",
+                    "angular-route.min.js.map"
+                ],
+                dest: "server/public/vendors/"
             },
             bootstrap: {
                 expand: true,
@@ -44,7 +61,8 @@ module.exports = function(grunt){
                 expand: true,
                 cwd: 'client',
                 src: [
-                    "views/*.html"
+                    "views/*.html",
+                    "views/*/*"
                 ],
                 "dest": "server/public/"
             }

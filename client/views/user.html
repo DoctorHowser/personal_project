@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles/style.css">
 
-    <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+    <!--<script type="text/javascript" src="/vendors/ui-bootstrap-tpls-0.14.3.min.js"></script>-->
     <script type="text/javascript" src="/assets/scripts/user.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/factories.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
+
 
 </head>
 <body>
-    <div class="instructions">
-        <div class="container">
-            <h1 id="welcome" class="lead">Welcome!</h1>
-        </div>
-    </div>
-    <div class="container">
-        <div id="user" class="jumbotron"></div>
-    </div>
+
+    <header ng-include="'/views/templates/header.html'"></header>
+    <nav ng-include="'/views/templates/instructornav.html'"></nav>
+    <main ng-view></main>
 </body>
 </html>

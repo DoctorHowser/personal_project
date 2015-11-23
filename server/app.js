@@ -33,7 +33,7 @@ app.use(passport.session());
 // Routes
 app.use('/register', register);
 app.use('/user', user);
-app.use('/', assign);
+app.use('/assign', assign);
 app.use('/', index);
 
 // Mongo Connection //

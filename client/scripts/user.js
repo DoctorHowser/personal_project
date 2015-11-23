@@ -1,20 +1,18 @@
-//$(document).ready(function(){
-//    console.log("Hey it loads!");
-//
-//    $.ajax({
-//        type: "GET",
-//        url: "/user",
-//        success: function(data){
-//            console.log(data);
-//            $("#welcome").text("Welcome, " +  data.username);
-//            appendDom(data)
-//        }
-//    });
-//});
-//
-//function appendDom (userData){
-//    var el = "<h1>" + userData.firstName + " " + userData.lastName + "</h1>" +
-//            "<h3>Email : " + userData.email + "</h3>";
-//
-//    $('#user').append(el);
-//}
+var myApp = angular.module('myApp', ['ngRoute']);
+
+myApp.config(['$routeProvider', function($routeProvider){
+    $routeProvider
+        .when('/assign', {
+            templateUrl: "/views/routes/assign.html",
+            controller: "AssignCtrl"
+        })
+        .when('/account', {
+            templateUrl: "/views/routes/account.html",
+            controller: "AccountCtrl"
+        })
+        .when('/queue', {
+            templateUrl: "/views/routes/queue.html",
+            controller: "QueueCtrl"
+        })
+        .otherwise('user');
+}]);
