@@ -5,7 +5,7 @@ var passport = require('passport');
 
 router.post('/',
         passport.authenticate('local', {
-            successRedirect: '/views/user.html',
+            successRedirect: '/views/instructor.html',
             failureRedirect: '/views/failure.html'
         })
 );

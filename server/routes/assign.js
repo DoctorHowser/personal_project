@@ -52,15 +52,5 @@ router.post('/', function(req,res) {
     //ON (assignments.id = students_assignments_junction.assignment_id)
     //WHERE students.id = 3;
 
-    //THIS IS A TEMPLATE FOR RETRIEVING ALL (submitted) ASSIGNMENTS (Instructor Queue)
-    //router.get('/')
-    //SELECT students.first_name, students_assignments_junction.*, assignments.*
-    //FROM students
-    //JOIN students_assignments_junction
-    //ON (students.id = students_assignments_junction.student_id)
-    //JOIN assignments
-    //ON (assignments.id = students_assignments_junction.assignment_id)
-    //WHERE students_assignments_junction.status_code = 1;
-
 });
 module.exports = router;

@@ -6,12 +6,12 @@ module.exports = function(grunt){
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             app: {
-                src: 'client/scripts/app.js',
-                dest: 'server/public/assets/scripts/app.min.js'
+                src: 'client/scripts/queue.js',
+                dest: 'server/public/assets/scripts/queue.min.js'
             },
             user: {
-                src: 'client/scripts/user.js',
-                dest: 'server/public/assets/scripts/user.min.js'
+                src: 'client/scripts/instructor.js',
+                dest: 'server/public/assets/scripts/instructor.min.js'
             },
             controllers: {
                 src: 'client/scripts/controllers/*.js',
@@ -29,6 +29,14 @@ module.exports = function(grunt){
                 src: [
                     "angular/angular.min.js",
                     "angular/angular.min.js.map"
+                ],
+                "dest": "server/public/vendors/"
+            },
+            angular_ui: {
+                expand: true,
+                cwd: 'node_modules',
+                src: [
+                    "angular-ui-bootstrap/ui-bootstrap-tpls.min.js"
                 ],
                 "dest": "server/public/vendors/"
             },

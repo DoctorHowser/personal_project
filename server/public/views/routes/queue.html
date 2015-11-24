@@ -1,3 +1,19 @@
-<h1>
-    THIS IS THE QUEUE PAGE
-</h1>
+<div class="container text-center">
+    <h1>YOUR QUEUE</h1>
+    <table class="table table-hover">
+        <thead>
+            <td ng-click="reverse=!reverse;sortBy('-first_name', reverse)">Student</td>
+            <td ng-click="reverse=!reverse;sortBy('assigned_cohort', reverse)">Cohort</td>
+            <td ng-click="reverse=!reverse;sortBy('title', reverse)">Assignment</td>
+            <td ng-click="reverse=!reverse;sortBy('update_time', reverse)">Date Submitted</td>
+        </thead>
+        <tbody>
+            <tr ng-repeat="info in queue" ng-click="open(info)">
+                <td>{{info.first_name}}</td>
+                <td>{{info.assigned_cohort}}</td>
+                <td>{{info.title}}</td>
+                <td>{{info.update_time}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

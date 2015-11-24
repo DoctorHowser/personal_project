@@ -10,6 +10,7 @@ var register = require('./routes/register');
 var user = require('./routes/user');
 var index = require('./routes/index');
 var assign = require('./routes/assign');
+var queue = require('./routes/queue');
 
 
 // App Set //
@@ -34,6 +35,7 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/user', user);
 app.use('/assign', assign);
+app.use('/queue', queue);
 app.use('/', index);
 
 // Mongo Connection //

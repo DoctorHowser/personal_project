@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 myApp.config(['$routeProvider', function($routeProvider){
     $routeProvider
@@ -14,5 +14,5 @@ myApp.config(['$routeProvider', function($routeProvider){
             templateUrl: "/views/routes/queue.html",
             controller: "QueueCtrl"
         })
-        .otherwise('user');
+        .otherwise('assign');
 }]);
