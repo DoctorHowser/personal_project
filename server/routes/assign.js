@@ -42,8 +42,10 @@ router.post('/', function(req,res) {
                     });
             });
     });
+
+
     //THIS IS A TEMPLATE FOR RETRIEVING ALL ASSIGNMENTS FOR 1 (logged in!) STUDENT (Student queue)
-    //router.get('/')
+
     //SELECT students.first_name, students_assignments_junction.*, assignments.*
     //FROM students
     //JOIN students_assignments_junction
@@ -53,4 +55,11 @@ router.post('/', function(req,res) {
     //WHERE students.id = 3;
 
 });
+
+router.get('/', function(req, res){
+    console.log(req);
+    res.send('got to the get assign route ')
+});
+
+
 module.exports = router;

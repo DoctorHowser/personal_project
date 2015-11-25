@@ -9,9 +9,13 @@ module.exports = function(grunt){
                 src: 'client/scripts/queue.js',
                 dest: 'server/public/assets/scripts/queue.min.js'
             },
-            user: {
+            instructor: {
                 src: 'client/scripts/instructor.js',
                 dest: 'server/public/assets/scripts/instructor.min.js'
+            },
+            student: {
+                src: 'client/scripts/student.js',
+                dest: 'server/public/assets/scripts/student.min.js'
             },
             controllers: {
                 src: 'client/scripts/controllers/*.js',
@@ -70,7 +74,8 @@ module.exports = function(grunt){
                 cwd: 'client',
                 src: [
                     "views/*.html",
-                    "views/*/*"
+                    "views/*/*",
+                    "views/*/*/*"
                 ],
                 "dest": "server/public/"
             }

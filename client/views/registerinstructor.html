@@ -10,12 +10,12 @@
 <body>
     <div class="instructions">
         <div class="container">
-            <h1 class="lead">Register New User</h1>
+            <h1 class="lead">Register New Instructor</h1>
         </div>
     </div>
 
     <div class="container">
-        <form action="/register" method="post">
+        <form action="/register/instructor" method="post">
             <div>
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username">
@@ -37,26 +37,11 @@
                 <label for="email">E-mail:</label>
                 <input type="email" name="email" id="email">
             </div>
-            <div>
-                <label for="cohort">Select your Cohort:</label>
-                <select name="cohort" id="cohort">
-                    <option>alpha</option>
-                    <option>beta</option>
-                    <option>gamma</option>
-                    <option>delta</option>
-                    <option>epsilon</option>
-                    <option>zeta</option>
-                    <option>eta</option>
-                    <option>theta</option>
-                    <option>iota</option>
-                    <option>kappa</option>
-                    <option>lambda</option>
-                </select>
-            </div>
 
-            <input type="submit" value="Register"/>
+
+            <input type="submit" value="Register Instructor"/>
         </form>
-        <a href="/register/instructor" >Instructor?</a>
+        <a href="/register/">Student?</a>
     </div>
 </body>
 </html>
