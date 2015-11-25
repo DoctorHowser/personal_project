@@ -1,10 +1,9 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-
-var mongoose = require('mongoose');
 var passport = require('./strategies/user');
 var session = require('express-session');
+var Model = require('./models/models');
 
 var register = require('./routes/register');
 var user = require('./routes/user');
@@ -38,19 +37,12 @@ app.use('/assign', assign);
 app.use('/queue', queue);
 app.use('/', index);
 
-// Mongo Connection //
-var mongoURI = "mongodb://localhost:27017/user_passport_session";
-//var mongoURI = "";
 
-var mongoDB = mongoose.connect(mongoURI).connection;
-
-mongoDB.on('error', function(err){
-   if(err) console.log("MONGO ERROR: ", err);
+//SQL Connection, test
+Model.User.sync({force: false}).then(function(){
+    console.log('Users table exists!!')
 });
 
-mongoDB.once('open', function(){
-   console.log("Connected to Mongo, meow!");
-});
 
 // Listen //
 app.listen(app.get("port"), function(){
