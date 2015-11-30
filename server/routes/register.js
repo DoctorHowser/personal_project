@@ -13,8 +13,6 @@ router.get('/', function (req, res, next){
 
 router.post('/', function(req,res,next) {
     var student = req.body;
-    console.log(student);
-
 
     var salt = bcrypt.genSaltSync(10);
     var hashedPassword = bcrypt.hashSync(student.password, salt);
@@ -42,16 +40,30 @@ router.post('/', function(req,res,next) {
 router.get('/instructor', function (req, res, next){
     res.sendFile(path.resolve(__dirname, '../public/views/registerinstructor.html'));
 });
+
 router.post('/instructor', function(req,res,next){
     var instructor = req.body;
-    instructor.role ='instructor';
-    Users.create(req.body, function(err,post){
-        if(err){
-            next(err);
-        } else {
-            res.redirect('/');
-        }
-    }) ;
+
+    var salt = bcrypt.genSaltSync(10);
+    var hashedPassword = bcrypt.hashSync(instructor.password, salt);
+
+    var newUser = {
+        username: instructor.username,
+        firstname: instructor.firstName,
+        lastname: instructor.lastName,
+        email: instructor.email,
+        role: 'instructor',
+        salt: salt,
+        password: hashedPassword
+    };
+
+    Model.User.create(newUser).then(function () {
+        res.redirect('/')
+    }).catch(function (error) {
+        req.flash('error', "Please, choose a different username.")
+        res.redirect('/register')
+    });
+
 });
 
 module.exports = router;

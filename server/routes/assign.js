@@ -4,7 +4,16 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/PrimeOrigin';
 
-router.post('/', function(req,res) {
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    else
+    console.log('redirect!');
+
+    return res.redirect('../')
+        }
+
+router.post('/', ensureAuthenticated, function(req,res) {
     var assignment = {
         title: req.body.title,
         description: req.body.description,
@@ -30,9 +39,9 @@ router.post('/', function(req,res) {
                     res.send(false);
                 }
 
-                client.query("INSERT INTO students_assignments_junction  (assignment_id, student_id, status_code) " +
-                    "SELECT assignments.id, students.id, 0 FROM assignments, students " +
-                    "WHERE students.cohort = assignments.assigned_cohort AND students.cohort = $1 AND assignments.id = $2;", [assignment.cohort, assignment.id],
+                client.query("INSERT INTO users_assignments_junction  (assignment_id, user_id, status_code) " +
+                    "SELECT assignments.id, users.id, 0 FROM assignments, users " +
+                    "WHERE users.cohort = assignments.assigned_cohort AND users.cohort = $1 AND assignments.id = $2;", [assignment.cohort, assignment.id],
                     function (err, result) {
                         if (err) {
                             console.log("Error inserting to junction table: ", err);
@@ -46,19 +55,30 @@ router.post('/', function(req,res) {
 
     //THIS IS A TEMPLATE FOR RETRIEVING ALL ASSIGNMENTS FOR 1 (logged in!) STUDENT (Student queue)
 
-    //SELECT students.first_name, students_assignments_junction.*, assignments.*
-    //FROM students
-    //JOIN students_assignments_junction
-    //ON (students.id = students_assignments_junction.student_id)
-    //JOIN assignments
-    //ON (assignments.id = students_assignments_junction.assignment_id)
-    //WHERE students.id = 3;
+
 
 });
 
-router.get('/', function(req, res){
-    console.log(req);
-    res.send('got to the get assign route ')
+router.get('/', ensureAuthenticated, function(req, res){
+    var id = req.user.dataValues.id;
+    var results = [];
+    pg.connect(connectionString,function (err, client) {
+        var query = client.query("SELECT users.firstname, users_assignments_junction.*, assignments.* " +
+            "FROM users " +
+            "JOIN users_assignments_junction " +
+            "ON (users.id = users_assignments_junction.user_id) " +
+            "JOIN assignments " +
+            "ON (assignments.id = users_assignments_junction.assignment_id) " +
+            "WHERE users.id = ($1);", [id]);
+
+        query.on('row', function (row) {
+            results.push(row);
+        });
+        query.on('end',function () {
+            client.end();
+            return res.json(results);
+        });
+    });
 });
 
 

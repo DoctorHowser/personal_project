@@ -4,10 +4,12 @@ var Model = require('../models/models');
 var bcrypt = require('bcrypt');
 
 passport.serializeUser(function(user, done){
+
     done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+
 
     Model.User.findOne({
         where: {

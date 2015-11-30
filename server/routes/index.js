@@ -12,9 +12,9 @@ router.post('/',
                res.redirect('/views/student.html');
             } else if (req.user.role === 'instructor') {
                 res.redirect('/views/instructor.html');
-            } else if (!req.user.role) {
-                console.log('user has no role, assuming student');
-                res.redirect('/views/student.html')
+            //} else if (!req.user.role) {
+            //    console.log('user has no role, assuming student');
+            //    res.redirect('/views/student.html')
             }
         });
 
