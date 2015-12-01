@@ -60,7 +60,7 @@ router.post('/instructor', function(req,res,next){
     Model.User.create(newUser).then(function () {
         res.redirect('/')
     }).catch(function (error) {
-        req.flash('error', "Please, choose a different username.")
+
         res.redirect('/register')
     });
 

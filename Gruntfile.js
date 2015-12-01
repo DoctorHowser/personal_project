@@ -9,12 +9,20 @@ module.exports = function(grunt){
                 src: 'client/scripts/queue.js',
                 dest: 'server/public/assets/scripts/queue.min.js'
             },
+            register: {
+                src: ['client/scripts/registration/register.js',
+                    'client/scripts/registration/auth-service.js',
+                    'client/scripts/registration/form.js'],
+                dest: 'server/public/assets/scripts/register.min.js'
+            },
             instructor: {
-                src: 'client/scripts/instructor.js',
+                src: ['client/scripts/instructor/instructor.js',
+                    'client/scripts/instructor/passwordmatch.js'],
                 dest: 'server/public/assets/scripts/instructor.min.js'
             },
             student: {
-                src: 'client/scripts/student.js',
+                src: ['client/scripts/student/student.js',
+                    'client/scripts/student/passwordmatch.js'],
                 dest: 'server/public/assets/scripts/student.min.js'
             },
             controllers: {
@@ -41,6 +49,14 @@ module.exports = function(grunt){
                 cwd: 'node_modules',
                 src: [
                     "angular-ui-bootstrap/ui-bootstrap-tpls.min.js"
+                ],
+                "dest": "server/public/vendors/"
+            },
+            angularMessages: {
+                expand: true,
+                cwd: 'node_modules',
+                src: [
+                    "angular-messages/angular-messages.min.js"
                 ],
                 "dest": "server/public/vendors/"
             },

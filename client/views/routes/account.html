@@ -1,3 +1,44 @@
-<h1>
-    THIS IS THE ACCOUNT PAGE
-</h1>
+<div class="container">
+    <h1 class="text-center">My Instructor Account</h1>
+    <div class="form-horizontal col-md-6">
+        <div class="form-group">
+            <p class="col-sm-6 control-label">Account info for: </p>
+            <div class="col-sm-6">
+                <p class="form-control">{{user.firstname}} {{user.lastname}}</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="col-sm-6 control-label">Email: </p>
+            <div class="col-sm-6">
+                <p class="form-control">{{user.email}}</p>
+            </div>
+        </div>
+    </div>
+
+    <form name="userForm" class="form-horizontal col-md-6" ng-submit="resetPassword()" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error' : userForm.newPassA.$invalid && !userForm.newPassA.$pristine }">
+            <label class="col-sm-6 control-label">New Password: </label>
+            <div  class="col-sm-6">
+                <input name="newPassA" type="password" class="form-control" ng-model="user.newPassA" required>
+                <p ng-show="userForm.newPassA.$invalid && !userForm.newPassA.$pristine" class="help-block">Enter new password</p>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-6 control-label">Repeat New Password: </label>
+            <div class="col-sm-6">
+                <input name="newPassB" type="password" class="form-control"
+                       ng-model="user.newPassB" required password-match="user.newPassA">
+                <p ng-show="userForm.$invalid && !userForm.newPassB.$pristine" class="help-block">Passwords do not match!</p>
+            </div>
+        </div>
+
+        <div class="col-sm-2 col-sm-offset-10">
+            <input ng-disabled="userForm.$invalid" type="submit" class="btn btn-info" >
+        </div>
+    </form>
+
+</div>

@@ -28,13 +28,25 @@ router.route('/')
                 }
             })
     })
-    .post(function(req, res){
+
+    .post(function(req, res) {
         console.log(req.body);
-        res.send('reached queue post route');
-        //UPDATE users_assignments_junction
-        //SET github = 'link', heroku = 'link', status_code = 1, students_comments = 'This is a comment', update_time = 'now'
-        //WHERE user_id = 1 AND assignment_id = 23;
+        var doc = req.body;
+        pg.connect(connectionString, function (err, client, done) {
+            if (err) console.log('error connecting to database: ', err);
+            client.query("UPDATE users_assignments_junction " +
+                "SET github = $1, heroku = $2, status_code = 1, students_comments = $3, update_time = 'now' " +
+                "WHERE user_id = $4 AND assignment_id = $5;", [doc.github, doc.heroku, doc.students_comments, doc.user_id, doc.assignment_id],
+                function (err, result) {
+                    if (err) {
+                        console.log('error writing to database: ', err);
+                        res.send(false);
+                    }
+                    return res.send('updated assignment!');
+                });
+        })
     })
+
     .put(function(req, res){
         var doc = req.body;
         pg.connect(connectionString, function(err, client, done){

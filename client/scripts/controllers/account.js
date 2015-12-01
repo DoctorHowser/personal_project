@@ -15,6 +15,10 @@ myApp.controller('AccountCtrl', ['$scope', '$http', 'DataService', function($sco
 
     $scope.user = $scope.dataService.peopleData();
 
+    $scope.resetPassword = function(){
+        console.log($scope.user.newPassA)
+    }
+
 }]);
 
 

@@ -10,6 +10,7 @@ var user = require('./routes/user');
 var index = require('./routes/index');
 var assign = require('./routes/assign');
 var queue = require('./routes/queue');
+var password = require('./routes/password');
 
 
 // App Set //
@@ -31,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use('/password', password);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/assign', assign);
