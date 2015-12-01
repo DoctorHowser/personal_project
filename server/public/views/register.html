@@ -34,8 +34,12 @@
                            name="username" id="username" ng-model="username"
                            ng-unique="{key: 'users', property: 'username'}"
                            required/>
-                    <p class="help-block" ng-show="signup_form.username.$error.unique">Please choose a different Username</p>
-                    <p class="help-block" ng-show="signup_form.username.$error.required && !signup_form.username.$pristine">Enter Username</p>
+
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.username.$error" ng-if="!signup_form.username.$pristine">
+                        <p ng-message="unique">Choose different username</p>
+                        <p ng-message="required">Enter Username</p>
+                    </div>
                 </div>
             </div>
 
@@ -47,7 +51,10 @@
                            type="password"
                            name="password" id="password" ng-model="password"
                            required/>
-                    <p class="help-block" ng-show="signup_form.password.$error.required && !signup_form.password.$pristine">
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.password.$error" ng-if="!signup_form.password.$pristine">
+                        <p ng-message="required">Enter Password</p>
+                    </div>
                 </div>
             </div>
 
@@ -58,8 +65,11 @@
                            type="password"
                            name="passwordB" id="passwordB" ng-model="passwordB"
                            required password-match="password"/>
-                    <p class="help-block" ng-show="signup_form.passwordB.$error.required && !signup_form.passwordB.$pristine">
-                        Please retype your password. </p>
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.passwordB.$error" ng-if="!signup_form.passwordB.$pristine">
+                        <p ng-message="required">Enter Password</p>
+                    </div>
+
                     <p ng-show="signup_form.passwordB.$invalid && !signup_form.passwordB.$pristine" class="help-block">Passwords do not match!</p>
                 </div>
             </div>
@@ -70,7 +80,11 @@
                     <input class='form-control'
                            type="text"
                            name="firstName" id="firstName" ng-model="firstName" required/>
-                    <p class="help-block" ng-show="signup_form.firstName.$error.required && !signup_form.firstName.$pristine">Enter First Name</p>
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.firstName.$error" ng-if="!signup_form.firstName.$pristine">
+                        <p ng-message="required">Enter First Name</p>
+                    </div>
+
                 </div>
             </div>
 
@@ -80,7 +94,10 @@
                     <input class='form-control'
                            type="text"
                            name="lastName" id="lastName" ng-model="lastName" required/>
-                    <p class="help-block" ng-show="signup_form.lastName.$error.required && !signup_form.lastName.$pristine">Enter Last Name</p>
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.lastName.$error" ng-if="!signup_form.lastName.$pristine">
+                        <p ng-message="required">Enter Last Name</p>
+                    </div>
                 </div>
             </div>
 
@@ -90,11 +107,12 @@
                     <input class='form-control'
                            type="email" name="email" id="email" ng-model="email"
                            required/>
+                    <!--Form Validation-->
+                    <div ng-messages="signup_form.email.$error" ng-if="!signup_form.email.$pristine">
+                        <p ng-message="required">Enter Email Address</p>
+                        <p ng-message="email">Enter a valid Email</p>
+                    </div>
 
-                    <p class="help-block" ng-show="signup_form.email.$error.required && !signup_form.email.$pristine">
-                        Enter Email Address</p>
-                    <p class="help-block" ng-show="signup_form.email.$error && !signup_form.email.$pristine">
-                        Enter Valid Email Address</p>
                 </div>
             </div>
 
