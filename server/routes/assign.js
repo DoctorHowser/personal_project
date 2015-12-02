@@ -4,16 +4,8 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/PrimeOrigin';
 
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    else
-    console.log('redirect!');
 
-    return res.redirect('../')
-        }
-
-router.post('/', ensureAuthenticated, function(req,res) {
+router.post('/', function(req,res) {
     var assignment = {
         title: req.body.title,
         description: req.body.description,
@@ -53,13 +45,10 @@ router.post('/', ensureAuthenticated, function(req,res) {
     });
 
 
-    //THIS IS A TEMPLATE FOR RETRIEVING ALL ASSIGNMENTS FOR 1 (logged in!) STUDENT (Student queue)
-
-
 
 });
 
-router.get('/', ensureAuthenticated, function(req, res){
+router.get('/', function(req, res){
     var id = req.user.dataValues.id;
     var results = [];
     pg.connect(connectionString,function (err, client) {

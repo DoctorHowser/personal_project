@@ -5,12 +5,11 @@ var passport = require('./strategies/user');
 var session = require('express-session');
 var Model = require('./models/models');
 
-var register = require('./routes/register');
-var user = require('./routes/user');
+
 var index = require('./routes/index');
-var assign = require('./routes/assign');
-var queue = require('./routes/queue');
-var password = require('./routes/password');
+//var assign = require('./routes/assign');
+//var queue = require('./routes/queue');
+//var password = require('./routes/password');
 
 
 // App Set //
@@ -32,11 +31,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/password', password);
-app.use('/register', register);
-app.use('/user', user);
-app.use('/assign', assign);
-app.use('/queue', queue);
+//app.use('/password', password);
+//app.use('/register', register);
+//app.use('/user', user);
+//app.use('/assign', assign);
+//app.use('/queue', queue);
+app.use(express.static('assets'));
+app.use(express.static('vendors'));
 app.use('/', index);
 
 

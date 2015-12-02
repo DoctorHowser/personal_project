@@ -1,19 +1,27 @@
  <div class="modal-content">
-    <div class="modal-body">
-        <form name="form" class="form-horizontal">
-            <h1 class="modal-title text-center">{{assignment.title}}</h1>
-            <div class="btn btn-warning col-sm-2" type="button" ng-click="cancel()">Return to Queue</div>
-            <input ng-disabled="form.$invalid" class="btn btn-primary col-sm-2 col-sm-offset-8" type="button" ng-click="ok()" value="Submit Feedback"/>
-            <div class="form-group" ng-class="{ 'has-error': !form.feedback.$pristine && form.feedback.$invalid }">
-                <label class="col-sm-2 control-label" for="feedback">Feedback for {{assignment.firstname}}: </label>
-                <div class="col-sm-10">
-                    <textarea ng-model="assignment.instructor_feedback" class="form-control" cols="40" rows="10" name="feedback" id="feedback" required></textarea>
-                    <div ng-messages="form.feedback.$error" ng-if="!form.feedback.$pristine">
-                        <p ng-message="required">Please provide some feedback for the student</p>
+     <div id='mhead' class="modal-content">
+         <header ng-include="'/views/templates/modalformheader.html'"></header>
+         <div class="modal-body">
+            <form name="form" class="form-horizontal">
+
+
+
+                <div class="form-group" ng-class="{ 'has-error': !form.feedback.$pristine && form.feedback.$invalid }">
+                    <label class="col-sm-2 control-label" for="feedback">Feedback for {{assignment.firstname}}: </label>
+                    <div class="col-sm-10">
+
+                        <textarea ng-model="assignment.instructor_feedback"
+                                  class="form-control" cols="40" rows="10"
+                                  name="feedback" id="feedback" required></textarea>
+
+                        <div ng-messages="form.feedback.$error" ng-if="!form.feedback.$pristine">
+                            <p ng-message="required">Please provide some feedback for the student</p>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </form>
+
+            </form>
 
             <div class="row">
                 <label class="col-sm-2 control-label">Github Repo: </label>
@@ -28,6 +36,8 @@
                 <div class="col-sm-10">{{assignment.students_comments}}</div>
             </div>
 
+         </div>
     </div>
 </div>
+
 

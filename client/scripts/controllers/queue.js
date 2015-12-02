@@ -1,4 +1,4 @@
-myApp.controller('QueueCtrl', ['$scope', '$http','$filter', '$uibModal', 'DataService', function($scope, $http, $filter, $uibModal, DataService) {
+myApp.controller('QueueCtrl', ['$scope', '$http','$filter','$window', '$uibModal', 'DataService', function($scope, $http, $filter, $window, $uibModal, DataService) {
     var orderBy = $filter('orderBy');
 
    //Persistant User Data
@@ -8,6 +8,11 @@ myApp.controller('QueueCtrl', ['$scope', '$http','$filter', '$uibModal', 'DataSe
 
     if($scope.dataService.peopleData() === undefined){
         $scope.dataService.retrieveData().then(function(){
+            var auth = $scope.dataService.peopleData();
+            console.log(auth);
+            if (!auth) {
+                $window.location.href = '/';
+            }
             $scope.user = $scope.dataService.peopleData();
         });
     }

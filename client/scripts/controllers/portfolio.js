@@ -1,11 +1,16 @@
-myApp.controller('PortfolioCtrl', ['$scope', '$http', 'DataService', '$uibModal', function($scope, $http, DataService, $uibModal) {
+myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', 'DataService', '$uibModal', function($scope, $http, $window, DataService, $uibModal) {
     $scope.dataService = DataService;
 
     $scope.user = {};
     $scope.portfolio = [];
 
+
     if($scope.dataService.peopleData() === undefined){
         $scope.dataService.retrieveData().then(function(){
+            var auth = $scope.dataService.peopleData();
+            if (!auth) {
+                $window.location.href = '/';
+            }
             $scope.user = $scope.dataService.peopleData();
         });
     }
