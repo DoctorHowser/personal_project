@@ -1,8 +1,8 @@
 <div class="modal-content">
     <div id='mhead' class="modal-header">
         <h1 class="modal-title text-center">{{assignment.title}}</h1>
-        <div class="btn btn-warning col-sm-2" type="button" ng-click="cancel()">Return to Queue</div>
-        <button ng-disabled="form.$invalid" class="btn btn-primary col-sm-2 col-sm-offset-8"  ng-click="ok()">Submit Assignment</button>
+        <div class="btn btn-default col-sm-2" type="button" ng-click="cancel()">Return to Queue</div>
+        <button ng-disabled="form.$invalid" class="btn btn-default col-sm-2 col-sm-offset-8"  ng-click="ok()">Submit Assignment</button>
         <!---->
     </div>
     <div class="modal-body">
@@ -35,10 +35,9 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Questions & Comments: </label>
                 <div class="col-md-10">
-                <textarea class="form-control ng-model="assignment.students_comments"></textarea>
+                <textarea class="form-control" ng-model="assignment.students_comments"></textarea>
                     </div>
             </div>
         </form>
-    </div>
     </div>
 </div>

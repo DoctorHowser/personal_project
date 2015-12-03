@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
 
-    <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendors/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles/style.css">
 
     <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
@@ -19,10 +19,10 @@
 
 </head>
 <body>
-
+    <div class="container">
     <header ng-include="'/views/templates/header.html'"></header>
     <nav ng-include="'/views/templates/studentnav.html'"></nav>
     <main ng-view></main>
-
+    </div>
 </body>
 </html>

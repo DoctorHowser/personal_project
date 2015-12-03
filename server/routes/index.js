@@ -8,14 +8,11 @@ var queue = require('../routes/queue');
 var password = require('../routes/password');
 var register = require('../routes/register');
 var user = require('../routes/user');
+var auth = require('../modules/auth');
 
 
 
-router.use('/password', password);
-router.use('/register', register);
-router.use('/user', user);
-router.use('/assign', assign);
-router.use('/queue', queue);
+
 
 router.post('/',
         passport.authenticate('local', {
@@ -26,15 +23,25 @@ router.post('/',
                res.redirect('/views/student.html');
             } else if (req.user.role === 'instructor') {
                 res.redirect('/views/instructor.html');
-            //} else if (!req.user.role) {
-            //    console.log('user has no role, assuming student');
-            //    res.redirect('/views/student.html')
             }
         });
 
-router.get("/*", function(req, res, next){
-    var file = req.params[0] || 'views/index.html';
-    res.sendFile(path.join(__dirname, "../public", file));
+router.get("/", function(req, res, next){
+    //var file = req.params[0] || 'views/index.html';
+    res.sendFile(path.join(__dirname, "../public", 'views/index.html'));
 });
+
+router.use('/register', register);
+router.use('/password', password);
+
+//AUTHORIZED AREA
+router.use('/*', auth);
+
+//RESTRICTED TO LOGIN
+
+
+router.use('/user', user);
+router.use('/assign', assign);
+router.use('/queue', queue);
 
 module.exports = router;

@@ -6,15 +6,20 @@ myApp.controller('QueueCtrl', ['$scope', '$http','$filter','$window', '$uibModal
 
     $scope.user = {};
 
+    $scope.restricted = function(){
+        var auth = $scope.dataService.peopleData();
+        if (!auth || auth.role != 'instructor') {
+            console.log('Restricted!');
+            return $window.location.href = '/user/logout';
+        }
+    };
+
     if($scope.dataService.peopleData() === undefined){
-        $scope.dataService.retrieveData().then(function(){
-            var auth = $scope.dataService.peopleData();
-            console.log(auth);
-            if (!auth) {
-                $window.location.href = '/';
-            }
+        $scope.dataService.retrieveData().then($scope.restricted).then(function(){
             $scope.user = $scope.dataService.peopleData();
         });
+
+
     }
 
     $scope.user = $scope.dataService.peopleData();

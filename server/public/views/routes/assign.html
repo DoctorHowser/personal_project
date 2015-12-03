@@ -1,30 +1,6 @@
  <div class="container">
-        <h1>Make Assignment</h1>
+        <h1 class="text-center">Make Assignment</h1>
         <form name="assignmentForm" novalidate>
-
-            <div class="form-group" ng-class="{ 'has-error': !assignmentForm.title.$pristine && assignmentForm.title.$invalid }">
-                <label for="title">Assignment Title:</label>
-                <input ng-model="assignment.title"  class="form-control" type="text" name="title" id="title" required>
-
-                <div ng-messages="assignmentForm.title.$error" ng-if="!assignmentForm.title.$pristine">
-                    <p ng-message="required">Give the assignment a title</p>
-                </div>
-            </div>
-
-            <div class="form-group" >
-                <label for="description">Description:</label>
-                <textarea ng-model="assignment.description" class="form-control" name="description" id="description"></textarea>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error': !assignmentForm.resource.$pristine && assignmentForm.resource.$invalid }">
-                <label for="resource">Resource Link:</label>
-                <input ng-model="assignment.resource" class="form-control" type="url" name="resource" id="resource" required>
-
-                <div ng-messages="assignmentForm.resource.$error" ng-if="!assignmentForm.resource.$pristine">
-                    <p ng-message="required">A resource URL (github!) is needed</p>
-                    <p ng-message="url">This is not a valid URL (http://...)</p>
-                </div>
-            </div>
 
             <div class="form-group">
                 <label for="cohort">Select Cohort:</label>
@@ -42,7 +18,33 @@
                     <option>lambda</option>
                 </select>
             </div>
-            <input ng-disabled="assignmentForm.$invalid" ng-click="makeAssignment()" class="btn btn-info" type="submit" value="Create Assignment"/>
+
+            <div class="form-group" ng-class="{ 'has-error': !assignmentForm.title.$pristine && assignmentForm.title.$invalid }">
+                <label for="title">Assignment Title:</label>
+                <input ng-model="assignment.title"  class="form-control" type="text" name="title" id="title" required>
+
+                <div ng-messages="assignmentForm.title.$error" ng-if="!assignmentForm.title.$pristine">
+                    <p ng-message="required">Give the assignment a title</p>
+                </div>
+            </div>
+
+            <div class="form-group" >
+                <label for="description">Instructions:</label>
+                <textarea ng-model="assignment.description" class="form-control" name="description" id="description"></textarea>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': !assignmentForm.resource.$pristine && assignmentForm.resource.$invalid }">
+                <label for="resource">Resource Link:</label>
+                <input ng-model="assignment.resource" class="form-control" type="url" name="resource" id="resource" required>
+
+                <div ng-messages="assignmentForm.resource.$error" ng-if="!assignmentForm.resource.$pristine">
+                    <p ng-message="required">A resource URL (github!) is needed</p>
+                    <p ng-message="url">This is not a valid URL (http://...)</p>
+                </div>
+            </div>
+
+
+            <input ng-disabled="assignmentForm.$invalid" ng-click="makeAssignment()" class="btn btn-default" type="submit" value="Create Assignment"/>
     </form>
 
  </div>

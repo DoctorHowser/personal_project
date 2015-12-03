@@ -7,18 +7,16 @@ myApp.controller('AssignCtrl', ['$scope', '$http','$window', 'DataService', func
         var auth = $scope.dataService.peopleData();
         if (!auth || auth.role != 'instructor') {
             console.log('Restricted!');
-            $window.location.href = '/';
+            return $window.location.href = '/user/logout';
         }
     };
 
     if($scope.dataService.peopleData() === undefined){
-        $scope.dataService.retrieveData().then(function(){
-            var auth = $scope.dataService.peopleData();
-            if (!auth || auth.role != 'instructor') {
-                $window.location.href = '/';
-            }
+        $scope.dataService.retrieveData().then($scope.restricted).then(function(){
             $scope.user = $scope.dataService.peopleData();
         });
+
+
     }
 
     $scope.user = $scope.dataService.peopleData();
@@ -32,5 +30,5 @@ myApp.controller('AssignCtrl', ['$scope', '$http','$window', 'DataService', func
             if(response) $scope.assignment = {};
         });
     };
-    $scope.restricted();
+
 }]);

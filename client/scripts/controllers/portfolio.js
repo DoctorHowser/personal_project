@@ -1,4 +1,5 @@
-myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', 'DataService', '$uibModal', function($scope, $http, $window, DataService, $uibModal) {
+myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', '$filter', 'DataService', '$uibModal', function($scope, $http, $window, $filter, DataService, $uibModal) {
+    var orderBy = $filter('orderBy');
     $scope.dataService = DataService;
 
     $scope.user = {};
@@ -17,14 +18,13 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', 'DataService', '
 
     $scope.user = $scope.dataService.peopleData();
     //Page Specific things
-    $scope.queue = [];
+
 
     $scope.populateTable = function(){
         $http.get('/assign').then(function(result){
             $scope.portfolio = result.data;
             console.log($scope.portfolio);
-            //$scope.queue = result.data;
-            //$scope.sortBy('-update_time', false);
+            $scope.sortBy('status_code', false);
         })
     };
 
@@ -78,6 +78,10 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', 'DataService', '
     }
 
 
+    };
+
+    $scope.sortBy = function(predicate, reverse){
+        $scope.portfolio= orderBy($scope.portfolio, predicate, reverse);
     };
 
     $scope.populateTable();

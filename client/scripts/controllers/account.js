@@ -19,7 +19,17 @@ myApp.controller('AccountCtrl', ['$scope', '$http', '$window','DataService', fun
     $scope.user = $scope.dataService.peopleData();
 
     $scope.resetPassword = function(){
-        console.log($scope.user.newPassA)
+        console.log('clicked!');
+        var body = {
+            username: $scope.user.username,
+            email: $scope.user.email,
+            password: $scope.user.newPassA
+        };
+        $http.post('/password/reset', body).then(function(){
+            $scope.user.newPassA = "";
+            $scope.user.newPassB = "";
+            $scope.userForm.$setPristine();
+        })
     }
 
 }]);

@@ -1,3 +1,7 @@
+.queue {
+    cursor:context-menu;
+}
+
 #mhead {
     min-height: 115px;
 }
@@ -42,4 +46,12 @@
 
 .btn-danger{
     margin-left: 10px;
+}
+
+.btn-default{
+    background-color: #337277;
+    color: whitesmoke;
+}
+.btn-default:hover{
+    background-color: #07AA9E;
 }
