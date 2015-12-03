@@ -2,7 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/PrimeOrigin';
+var connectionString = "";
+
+if(process.env.DATABASE_URL != undefined) {
+    connectionString = process.env.DATABASE_URL + "?ssl=true";
+} else {
+    connectionString = 'postgres://localhost:5432/sql_lecture';
+}
 
 router.route('/')
     .get(function(req,res){
