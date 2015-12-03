@@ -12,8 +12,8 @@
 }
 
 .instructions {
-    background-color: #333333;
-    color: #DDDDDD;
+    background-color: #337277;
+    color: whitesmoke;
 }
 
 #entryForm {
@@ -54,4 +54,5 @@
 }
 .btn-default:hover{
     background-color: #07AA9E;
+    color: whitesmoke;
 }

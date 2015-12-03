@@ -9,8 +9,8 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', '$filter', 'Data
     if($scope.dataService.peopleData() === undefined){
         $scope.dataService.retrieveData().then(function(){
             var auth = $scope.dataService.peopleData();
-            if (!auth) {
-                $window.location.href = '/';
+            if (!auth || auth.role != 'student') {
+                $window.location.href = '/user/logout';
             }
             $scope.user = $scope.dataService.peopleData();
         });

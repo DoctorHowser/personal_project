@@ -9,8 +9,8 @@ myApp.controller('AccountCtrl', ['$scope', '$http', '$window','DataService', fun
     if($scope.dataService.peopleData() === undefined){
         $scope.dataService.retrieveData().then(function(){
             var auth = $scope.dataService.peopleData();
-            if (!auth) {
-                $window.location.href = '/';
+            if (!auth || auth.role != ('student' || 'instructor')) {
+                $window.location.href = '/user/logout';
             }
             $scope.user = $scope.dataService.peopleData();
         });
