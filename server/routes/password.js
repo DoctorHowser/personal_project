@@ -16,6 +16,7 @@ if(process.env.DATABASE_URL != undefined) {
 
 
 router.post('/reset', function(req, res) {
+    console.log(req.body);
 
     var user = req.body;
 
