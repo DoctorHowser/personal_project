@@ -39,12 +39,13 @@ app.use('/', index);
 
 
 //SQL Connection, test
-Model.User.sync({force: false}).then(function(){
-    console.log('Users table exists!!')
+Model.User.sync({force: false}).then(function() {
+   console.log('Users table exists!!');
+   app.listen(app.get("port"), function () {
+      console.log("Listening on port: " + app.get("port"));
+
+   });
 });
 
 
 // Listen //
-app.listen(app.get("port"), function(){
-   console.log("Listening on port: " + app.get("port"));
-});

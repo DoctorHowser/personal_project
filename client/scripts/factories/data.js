@@ -11,7 +11,7 @@ myApp.factory('DataService', ['$http', function($http){
             user = response.data;
             console.log("Async Data Response: ", user);
             return response.data;
-            //return response.data.people;
+
         });
     };
 
