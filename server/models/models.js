@@ -1,4 +1,4 @@
-var UserMeta = require('./User.js'),
+var UserMeta = require('./user.js'),
     connection = require('../modules/sequelize.js');
 
 var User = connection.define('users', UserMeta.attributes, UserMeta.options);
