@@ -27,7 +27,10 @@ myApp.controller('AssignCtrl', ['$scope', '$http','$window', 'DataService', func
 
         console.log($scope.assignment);
         $http.post('/assign', $scope.assignment).then(function(response){
-            if(response) $scope.assignment = {};
+            if(response) {
+                $scope.assignment = {};
+                $scope.assignmentForm.$setPristine();
+            }
         });
     };
 
