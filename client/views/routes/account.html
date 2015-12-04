@@ -1,7 +1,6 @@
 <div class="well clearfix">
     <h1 class="text-center">My Account</h1>
     <div class="form-horizontal col-md-6 col-sm-12">
-        <h1 class="text-center">My Account</h1>
 
         <div class="form-group">
             <p class="col-sm-4 control-label">Account info for: </p>
@@ -33,7 +32,6 @@
             <label class="col-sm-6 control-label">Repeat New Password: </label>
             <div class="col-sm-6">
                 <input name="newPassB" type="password" class="form-control" ng-model="user.newPassB" required password-match="user.newPassA"></input>
-                <p ng-show="userForm.$invalid && !userForm.newPassB.$pristine" class="help-block">Passwords do not match!</p>
             </div>
         </div>
         <div class="form-group">
