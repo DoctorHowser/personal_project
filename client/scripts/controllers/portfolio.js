@@ -33,7 +33,7 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', '$filter', 'Data
             //for new assignments
             case 0:
                 var modalInstance = $uibModal.open({
-                    animation: false,
+                    animation: true,
                     templateUrl: 'templates/studentmodal.html',
                     controller: 'StudentModalCtrl',
                     size: 'lg',
@@ -48,7 +48,7 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', '$filter', 'Data
             //for submitted assignments
             case 1:
                 var modalInstance = $uibModal.open({
-                    animation: false,
+                    animation: true,
                     templateUrl: 'templates/studentmodalsubmitted.html',
                     controller: 'StudentModalCtrl',
                     size: 'lg',
@@ -63,7 +63,7 @@ myApp.controller('PortfolioCtrl', ['$scope', '$http','$window', '$filter', 'Data
             //for reviewed assignments
             case 2:
                 var modalInstance = $uibModal.open({
-                    animation: false,
+                    animation: true,
                     templateUrl: 'templates/studentmodalreviewed.html',
                     controller: 'StudentModalCtrl',
                     size: 'lg',

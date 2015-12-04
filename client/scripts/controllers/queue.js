@@ -45,7 +45,7 @@ myApp.controller('QueueCtrl', ['$scope', '$http','$filter','$window', '$uibModal
     $scope.open = function(data) {
 
         var modalInstance = $uibModal.open({
-            animation: false,
+            animation: true,
             templateUrl: 'templates/instructormodal.html',
             controller: 'InstructorModalCtrl',
             size: 'lg',

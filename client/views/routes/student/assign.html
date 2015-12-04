@@ -1,6 +1,8 @@
 
-     <h1 class="text-center">YOUR ASSIGNMENTS</h1>
-     <table class="table table-hover">
+
+    <div class="well">
+     <table class="table table-hover table-responsive ">
+         <h1 class="text-center">YOUR ASSIGNMENTS</h1>
          <thead>
             <tr>
              <th>Assignment Title</th>
@@ -8,7 +10,7 @@
             </tr>
          </thead>
          <tbody>
-         <tr ng-repeat="info in portfolio" ng-click="open(info)">
+         <tr class='queue' ng-repeat="info in portfolio" ng-click="open(info)">
              <td>{{info.title}}</td>
              <td ng-if="info.status_code === 0">New!</td>
              <td ng-if="info.status_code === 1">Submitted</td>
@@ -16,3 +18,4 @@
          </tr>
          </tbody>
      </table>
+    </div>

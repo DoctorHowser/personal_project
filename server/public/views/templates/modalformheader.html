@@ -1,6 +1,6 @@
 <div id='mhead' class="modal-header">
     <h1 class="modal-title text-center">{{assignment.title}}</h1>
-    <div class="btn btn-warning col-sm-2" type="button" ng-click="cancel()">Return to Queue</div>
-    <button ng-disabled="form.$invalid" class="btn btn-default col-sm-2 col-sm-offset-8"  ng-click="ok()">Submit</button>
+    <div class="btn btn-default col-sm-2" type="button" ng-click="cancel()"><span class="pull-left" aria-hidden="true">&times;</span>Return to Queue</div>
+    <button ng-disabled="form.$invalid" class="btn btn-default col-sm-2 col-sm-offset-8"  ng-click="ok()">Submit<span class="glyphicon glyphicon-ok"></span></button>
     <!---->
 </div>

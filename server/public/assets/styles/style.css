@@ -1,3 +1,7 @@
+body{
+    background-color: #404040;
+}
+
 .queue {
     cursor:context-menu;
 }
@@ -9,11 +13,14 @@
 .instructions .container h1 {
     font-size: 24px;
     font-weight: 700;
+    opacity: 1;
+    color: whitesmoke
 }
 
 .instructions {
     background-color: #337277;
-    color: whitesmoke;
+    color: white;
+    opacity: 0.8;
 }
 
 #entryForm {
@@ -28,22 +35,6 @@
     margin-top : 14px;
 }
 
-.message {
-    padding: 10px 0;
-}
-
-.message p {
-    margin-left: 10px;
-}
-
-.message:nth-child(odd) {
-     background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
 .btn-danger{
     margin-left: 10px;
 }
@@ -56,3 +47,43 @@
     background-color: #07AA9E;
     color: whitesmoke;
 }
+.background {
+    background-image: url('/images/prime-pipes.jpg')
+}
+.nav-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-fix {
+    border-color: transparent;
+    margin: 0 1px 2px 1px;
+}
+a {
+    color: #337277;
+}
+.table-hover > tbody > tr:hover {
+    background-color: #D2D2D2;
+}
+
+.acct-fix {
+    min-height: 500px;
+}
+
+.nav>li>a:hover {
+    background-color: #07AA9E;
+}
+
+.jumbotron {
+    background: url("/images/blocks.jpg") no-repeat center center;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    color: #FFF; // change text color
+}
+
+.logout{
+    color: #FFF; // change text color
+}
+

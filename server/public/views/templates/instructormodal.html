@@ -4,8 +4,6 @@
          <div class="modal-body">
             <form name="form" class="form-horizontal">
 
-
-
                 <div class="form-group" ng-class="{ 'has-error': !form.feedback.$pristine && form.feedback.$invalid }">
                     <label class="col-sm-2 control-label" for="feedback">Feedback for {{assignment.firstname}}: </label>
                     <div class="col-sm-10">
@@ -25,11 +23,11 @@
 
             <div class="row">
                 <label class="col-sm-2 control-label">Github Repo: </label>
-                <a class="col-sm-10" ng-href="assignment.github">{{assignment.firstname}}'s Github Repo</a>
+                <a class="col-sm-10" ng-href="{{assignment.github}}">{{assignment.firstname}}'s Github Repo</a>
             </div>
             <div class="row" ng-if="assignment.heroku">
                 <label class="col-sm-2 control-label">Heroku Link: </label>
-                <a class="col-sm-10" ng-href="assignment.heroku">{{assignment.firstname}}'s Heroku Website</a>
+                <a class="col-sm-10" ng-href="{{assignment.heroku}}">{{assignment.firstname}}'s Heroku Website</a>
             </div>
             <div class="row" ng-if="assignment.students_comments">
                 <label class="col-sm-2 control-label">Student Feedback: </label>
