@@ -6,7 +6,7 @@ formApp.factory('AuthService', ['$http', function($http) {
             property: property,
             value: value
         };
-        return $http.post("/password", data).then(function (res) {
+        return $http.post("/password/check", data).then(function (res) {
             return res.data.isUnique;
         });
     };

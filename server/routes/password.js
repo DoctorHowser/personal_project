@@ -41,7 +41,35 @@ router.post('/reset', function(req, res) {
 
 
 });
+router.post('/check', function(req, res) {
+    var result = 0;
+    var check = req.body;
+    pg.connect(connectionString, function(err, client, done){
+           if (err) console.log('error connection to database: ', err);
+           var query = client.query("SELECT username " +
+                "FROM users " +
+                "WHERE username = $1;", [check.value]);
+           query.on('row', function(row){
+               result++;
+               });
+           query.on('end', function(){
+               if (result === 0) {
+                  res.send({
+                      'error': false,
+                      'isUnique': true
+                  });
+               } else {
+                res.send({
+                  'error': false,
+                    'isUnique': false
+                    })
+                }
+            });
+    });
+});
+
 router.post('/', function(req, res) {
+    console.log(req.body);
     var result = 0;
     var check = req.body;
     pg.connect(connectionString, function(err, client, done){
